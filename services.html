@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <title>Tjänster – Q-Core</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-indigo-50 via-slate-50 to-white text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-indigo-700/90 border-b border-indigo-600 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white text-indigo-700 font-bold">Q</span>
+        <span class="font-semibold tracking-tight">Q-Core</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html" class="hover:opacity-80">Hem</a>
+        <a href="services.html" class="hover:opacity-80 font-semibold underline">Tjänster</a>
+        <a href="index.html#priser" class="hover:opacity-80">Priser</a>
+        <a href="index.html#kalkyl" class="hover:opacity-80">Kalkylator</a>
+        <a href="index.html#kontakt" class="hover:opacity-80">Kontakt</a>
+      </nav>
+      <a href="index.html#kontakt" class="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2 text-indigo-700 text-sm shadow-sm hover:bg-indigo-100">
+        Boka demo
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-indigo-600 to-violet-500 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h1 class="text-4xl md:text-5xl font-bold">Våra tjänster</h1>
+      <p class="mt-4 text-lg text-indigo-100">
+        Här kan du läsa mer om de tjänster som ingår i Q-Core plattformen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lista med tjänster -->
+  <main class="max-w-7xl mx-auto px-4 py-12 space-y-12">
+    <section id="svc-qcore">
+      <h2 class="text-2xl font-semibold text-indigo-700">🗄️ Q-Core Plattform</h2>
+      <p class="mt-2 text-slate-600">Centralt datalager, asset-register och API-lager.</p>
+    </section>
+
+    <section id="svc-hosting">
+      <h2 class="text-2xl font-semibold text-indigo-700">🛡️ Hosting & drift (SE)</h2>
+      <p class="mt-2 text-slate-600">Säker drift i svensk serverhall med övervakning, backup och uppgraderingar.</p>
+    </section>
+
+    <section id="svc-bankid">
+      <h2 class="text-2xl font-semibold text-indigo-700">✅ BankID-inloggning</h2>
+      <p class="mt-2 text-slate-600">Säker inloggning via Zignsec, med AD-koppling och roller.</p>
+    </section>
+
+    <section id="svc-scada">
+      <h2 class="text-2xl font-semibold text-indigo-700">🕸️ SCADA-integration</h2>
+      <p class="mt-2 text-slate-600">TLS/IP-noder för att publicera datapunkter från valfritt SCADA.</p>
+    </section>
+
+    <section id="svc-semantik">
+      <h2 class="text-2xl font-semibold text-indigo-700">🧩 Semantisk modell</h2>
+      <p class="mt-2 text-slate-600">Brick, REC och Haystack för portabel, sökbar data.</p>
+    </section>
+
+    <section id="svc-qenergival">
+      <h2 class="text-2xl font-semibold text-indigo-700">⚡ Q-Energival</h2>
+      <p class="mt-2 text-slate-600">Validering och uppföljning av energidata med SPoG-vyer.</p>
+    </section>
+
+    <section id="svc-ai">
+      <h2 class="text-2xl font-semibold text-indigo-700">🧠 AI Analys 1.0</h2>
+      <p class="mt-2 text-slate-600">RAG-baserat beslutsstöd med ROI-beräkning och rapport.</p>
+    </section>
+
+    <section id="svc-api">
+      <h2 class="text-2xl font-semibold text-indigo-700">🔌 API & dataport</h2>
+      <p class="mt-2 text-slate-600">Öppna gränssnitt för import/export och tredjepartsappar.</p>
+    </section>
+
+    <section id="svc-sysmgmt">
+      <h2 class="text-2xl font-semibold text-indigo-700">📋 Systemförvaltning</h2>
+      <p class="mt-2 text-slate-600">Styrning av backlog, prioritering och förändringshantering.</p>
+    </section>
+
+    <section id="svc-sla">
+      <h2 class="text-2xl font-semibold text-indigo-700">🎧 SLA & support</h2>
+      <p class="mt-2 text-slate-600">Support med definierade svarstider och åtgärdstider (8x5 eller 24/7).</p>
+    </section>
+
+    <section id="svc-opt">
+      <h2 class="text-2xl font-semibold text-indigo-700">📈 Systemoptimering</h2>
+      <p class="mt-2 text-slate-600">Kvartalsvisa förbättringar med mätbar effekt.</p>
+    </section>
+
+    <section id="svc-onboarding">
+      <h2 class="text-2xl font-semibold text-indigo-700">👥 Onboarding & utbildning</h2>
+      <p class="mt-2 text-slate-600">Strukturerad uppstart och praktisk utbildning per roll.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t bg-indigo-700 text-white">
+    <div class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <div>
+        © <span id="year"></span> Q-Core / INIT – Alla rättigheter förbehålls.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:underline">Integritet</a>
+        <a href="#" class="hover:underline">Säkerhet</a>
+        <a href="#" class="hover:underline">Status</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
