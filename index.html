@@ -1,26 +1,545 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <title>TEST</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-    }
-  </style>
-</head>
-<body>
-  <h1>Test</h1>
-  <p>Det här är min första sida hostad med <strong>GitHub Pages</strong>.</p>
-  <p>🚀 Publicerad direkt från min <code>main</code>-branch.</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Q-Core – Plattform & tjänster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-b from-indigo-50 via-slate-50 to-white text-slate-900"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 backdrop-blur bg-indigo-700/90 border-b border-indigo-600 text-white"
+    >
+      <div
+        class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white text-indigo-700 font-bold"
+            >Q</span
+          >
+          <span class="font-semibold tracking-tight">Q-Core</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="services.html" class="hover:opacity-80">Tjänster</a>
+          <a href="#priser" class="hover:opacity-80">Priser</a>
+          <a href="#kalkyl" class="hover:opacity-80">Kalkylator</a>
+          <a href="#kontakt" class="hover:opacity-80">Kontakt</a>
+        </nav>
+        <a
+          href="#kontakt"
+          class="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2 text-indigo-700 text-sm shadow-sm hover:bg-indigo-100"
+          >Boka demo</a
+        >
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-indigo-600 to-violet-500 text-white">
+      <div
+        class="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+            Single Pane of Glass för fastighetsautomation
+          </h1>
+          <p class="mt-5 text-lg text-indigo-100">
+            Q-Core är den horisontella dataplattformen med semantisk modell,
+            öppna API:er och säkra integrationer.
+          </p>
+          <div class="mt-8 flex gap-3">
+            <a
+              href="#priser"
+              class="rounded-2xl bg-white px-5 py-3 text-indigo-700 font-semibold shadow hover:bg-slate-100"
+              >Visa priser</a
+            >
+            <a
+              href="services.html"
+              class="rounded-2xl border border-white px-5 py-3 shadow-sm hover:bg-white hover:text-indigo-700"
+              >Utforska tjänster</a
+            >
+          </div>
+          <p class="mt-4 text-xs text-indigo-200">
+            Alla priser nedan är exempelpriser exkl. moms.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl p-6 shadow-md border text-slate-900">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <li class="rounded-2xl border p-4 bg-indigo-50">
+              <div class="font-semibold text-indigo-700">Any-SCADA</div>
+              <div class="text-slate-600">BACnet · OPC UA · MQTT</div>
+            </li>
+            <li class="rounded-2xl border p-4 bg-indigo-50">
+              <div class="font-semibold text-indigo-700">Säker inloggning</div>
+              <div class="text-slate-600">BankID via Zignsec</div>
+            </li>
+            <li class="rounded-2xl border p-4 bg-indigo-50">
+              <div class="font-semibold text-indigo-700">Drift i Sverige</div>
+              <div class="text-slate-600">TLS/IP · AD/BankID</div>
+            </li>
+            <li class="rounded-2xl border p-4 bg-indigo-50">
+              <div class="font-semibold text-indigo-700">AI Analys 1.0</div>
+              <div class="text-slate-600">RAG-beslut & rapport</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tjänster (kort som länkar till services.html#...) -->
+    <section
+      id="tjanster"
+      class="py-12 border-t bg-gradient-to-b from-white to-indigo-50"
+    >
+      <div class="mx-auto max-w-7xl px-4">
+        <h2 class="text-3xl font-bold tracking-tight text-indigo-700">
+          Tjänster
+        </h2>
+        <p class="mt-2 text-slate-600">
+          Klicka på en tjänst för att läsa detaljer.
+        </p>
+
+        <div
+          class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          id="serviceCards"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Paket & prisexempel -->
+    <section id="priser" class="py-12 border-t bg-white">
+      <div class="mx-auto max-w-7xl px-4">
+        <h2 class="text-3xl font-bold tracking-tight text-indigo-700">
+          Paket & prisexempel
+        </h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-3xl border p-6 shadow-sm">
+            <h3 class="text-xl font-semibold text-indigo-700">Bas</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>• Q-Core per fastighet</li>
+              <li>• Hosting i svensk hall</li>
+              <li>• API-åtkomst</li>
+              <li>• SCADA-koppling (tillägg)</li>
+            </ul>
+          </div>
+          <div class="rounded-3xl border p-6 shadow-sm ring-2 ring-violet-500">
+            <h3 class="text-xl font-semibold text-indigo-700">Pro</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>• Allt i Bas</li>
+              <li>• Semantisk modell</li>
+              <li>• Q-Energival</li>
+              <li>• Systemförvaltning 1 dag/mån</li>
+            </ul>
+          </div>
+          <div class="rounded-3xl border p-6 shadow-sm">
+            <h3 class="text-xl font-semibold text-indigo-700">Enterprise</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>• Allt i Pro</li>
+              <li>• AI Analys 1.0</li>
+              <li>• SLA 24/7</li>
+              <li>• Kundspecifika integrationer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kalkylator -->
+    <section
+      id="kalkyl"
+      class="py-12 border-t bg-gradient-to-b from-white to-indigo-50"
+    >
+      <div class="mx-auto max-w-7xl px-4">
+        <h2 class="text-3xl font-bold tracking-tight text-indigo-700">
+          Kostnadskalkyl (exempel)
+        </h2>
+        <div class="mt-6 grid lg:grid-cols-2 gap-6">
+          <div class="rounded-3xl border bg-white p-6 shadow-sm">
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <label class="flex flex-col">
+                <span>Antal fastigheter</span>
+                <input
+                  id="inpProperties"
+                  type="number"
+                  min="1"
+                  value="50"
+                  class="mt-1 rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </label>
+              <label class="flex flex-col">
+                <span>Antal SCADA-sites</span>
+                <input
+                  id="inpScadaSites"
+                  type="number"
+                  min="0"
+                  value="10"
+                  class="mt-1 rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </label>
+              <label class="flex flex-col">
+                <span>BankID-inloggningar/mån</span>
+                <input
+                  id="inpBankid"
+                  type="number"
+                  min="0"
+                  value="2000"
+                  class="mt-1 rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </label>
+
+              <label class="flex items-center gap-2 col-span-2">
+                <input id="chkPro" type="checkbox" checked />
+                <span
+                  >Inkludera Pro-nivå (semantik, Q-Energival,
+                  systemförvaltning)</span
+                >
+              </label>
+              <label class="flex items-center gap-2 col-span-2">
+                <input id="chkEnterprise" type="checkbox" />
+                <span>Inkludera Enterprise (AI Analys + SLA 24/7)</span>
+              </label>
+              <label class="flex items-center gap-2 col-span-2">
+                <input id="chkQEnergival" type="checkbox" checked />
+                <span>Lägg till Q-Energival</span>
+              </label>
+              <label class="flex items-center gap-2 col-span-2">
+                <input id="chkAI" type="checkbox" />
+                <span>Lägg till AI Analys 1.0</span>
+              </label>
+              <label class="flex items-center gap-2 col-span-2">
+                <input id="chkSLA247" type="checkbox" />
+                <span>SLA 24/7</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border bg-white p-6 shadow-sm">
+            <div class="text-sm text-slate-600">
+              Ungefärlig kostnad (exkl. moms)
+            </div>
+            <div
+              class="mt-2 text-4xl font-bold text-indigo-700"
+              id="outMonthly"
+            >
+              —
+            </div>
+            <div class="mt-2 text-lg">
+              Engång:
+              <span class="font-semibold text-indigo-700" id="outOnetime"
+                >—</span
+              >
+            </div>
+            <p class="mt-4 text-sm text-slate-600">
+              Beloppen är indikativa och kan variera med volym, datamängd, SLA
+              och integrationsomfång.
+            </p>
+            <a
+              href="#kontakt"
+              class="mt-6 inline-flex items-center justify-center rounded-2xl bg-indigo-700 px-4 py-2 text-white text-sm shadow hover:bg-indigo-800"
+              >Få exakt offert</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-12 border-t bg-white">
+      <div class="mx-auto max-w-3xl px-4">
+        <h2 class="text-3xl font-bold tracking-tight text-indigo-700">
+          Boka demo eller begär offert
+        </h2>
+        <form
+          onsubmit="event.preventDefault()"
+          class="mt-6 grid md:grid-cols-2 gap-4"
+        >
+          <input
+            placeholder="Namn"
+            class="rounded-2xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <input
+            placeholder="E-post"
+            class="rounded-2xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <input
+            placeholder="Företag/Organisation"
+            class="rounded-2xl border px-4 py-3 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <textarea
+            placeholder="Beskriv behov (antal fastigheter, SCADA, SLA, AI, energi m.m.)"
+            rows="5"
+            class="rounded-2xl border px-4 py-3 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          ></textarea>
+          <button
+            class="rounded-2xl bg-indigo-700 px-5 py-3 text-white shadow hover:bg-indigo-800 md:col-span-2"
+          >
+            Skicka
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t bg-indigo-700 text-white">
+      <div
+        class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+      >
+        <div>
+          © <span id="year"></span> Q-Core / INIT – Alla rättigheter förbehålls.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:underline">Integritet</a>
+          <a href="#" class="hover:underline">Säkerhet</a>
+          <a href="#" class="hover:underline">Status</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Data + rendering (vanilla JS) -->
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const CURRENCY = "kr";
+      const basePrices = {
+        qcorePerPropertyMonthly: 1200,
+        hostingBaseMonthly: 5000,
+        hostingPerPropertyMonthly: 50,
+        bankidMonthly: 1500,
+        bankidPerAuth: 5,
+        scadaOnboardingPerSiteSetup: 35000,
+        scadaPerSiteMonthly: 1000,
+        semanticModelPerPropertyOnetime: 900,
+        semanticModelPerPropertyMonthly: 150,
+        qEnergivalPerPropertyMonthly: 500,
+        aiAnalysisPerPropertyMonthly: 1500,
+        apiMonthly: 2000,
+        sysmgmtDayPerMonth: 12500,
+        slaOfficeHoursMonthly: 12000,
+        sla247Monthly: 28000,
+        optimizationQuarter: 40000,
+        trainingOnboarding: 18000,
+      };
+      const fmt = (n) =>
+        new Intl.NumberFormat("sv-SE", {
+          style: "currency",
+          currency: "SEK",
+          maximumFractionDigits: 0,
+        })
+          .format(n)
+          .replace("SEK", CURRENCY)
+          .trim();
+
+      // Tjänster för kort (med emoji-ikoner) – länkar till services.html#id
+      const services = [
+        {
+          id: "svc-qcore",
+          title: "Q-Core plattform",
+          icon: "🗄️",
+          short: "Centralt datalager, asset-register och API-lager.",
+          price: () =>
+            `${fmt(basePrices.qcorePerPropertyMonthly)}/fastighet/mån`,
+        },
+        {
+          id: "svc-hosting",
+          title: "Hosting & drift (SE)",
+          icon: "🛡️",
+          short:
+            "Säker drift i svensk serverhall med övervakning, backup och uppgraderingar.",
+          price: () =>
+            `${fmt(basePrices.hostingBaseMonthly)} + ${fmt(
+              basePrices.hostingPerPropertyMonthly
+            )}/fastighet/mån`,
+        },
+        {
+          id: "svc-bankid",
+          title: "BankID-inloggning",
+          icon: "✅",
+          short: "Säker inloggning via Zignsec, med AD-koppling och roller.",
+          price: () =>
+            `${fmt(basePrices.bankidMonthly)} + ${
+              basePrices.bankidPerAuth
+            }${CURRENCY}/inloggning`,
+        },
+        {
+          id: "svc-scada",
+          title: "SCADA-integration",
+          icon: "🕸️",
+          short:
+            "TLS/IP-noder för att publicera datapunkter från valfritt SCADA.",
+          price: () =>
+            `${fmt(basePrices.scadaOnboardingPerSiteSetup)} engång/site + ${fmt(
+              basePrices.scadaPerSiteMonthly
+            )}/site/mån`,
+        },
+        {
+          id: "svc-semantik",
+          title: "Semantisk modell",
+          icon: "🧩",
+          short: "Brick, REC och Haystack för portabel, sökbar data.",
+          price: () =>
+            `${fmt(
+              basePrices.semanticModelPerPropertyOnetime
+            )} engång/fastighet + ${fmt(
+              basePrices.semanticModelPerPropertyMonthly
+            )}/fastighet/mån`,
+        },
+        {
+          id: "svc-qenergival",
+          title: "Q-Energival",
+          icon: "⚡",
+          short: "Validering och uppföljning av energidata med SPoG-vyer.",
+          price: () =>
+            `${fmt(basePrices.qEnergivalPerPropertyMonthly)}/fastighet/mån`,
+        },
+        {
+          id: "svc-ai",
+          title: "AI Analys 1.0",
+          icon: "🧠",
+          short: "RAG-baserat beslutsstöd med ROI-beräkning och rapport.",
+          price: () =>
+            `${fmt(basePrices.aiAnalysisPerPropertyMonthly)}/fastighet/mån`,
+        },
+        {
+          id: "svc-api",
+          title: "API & dataport",
+          icon: "🔌",
+          short: "Öppna gränssnitt för import/export och tredjepartsappar.",
+          price: () => `${fmt(basePrices.apiMonthly)}/mån`,
+        },
+        {
+          id: "svc-sysmgmt",
+          title: "Systemförvaltning",
+          icon: "📋",
+          short: "Styrning av backlog, prioritering och förändringshantering.",
+          price: () => `${fmt(basePrices.sysmgmtDayPerMonth)}/mån`,
+        },
+        {
+          id: "svc-sla",
+          title: "SLA & support",
+          icon: "🎧",
+          short: "Support med definierade svarstider och åtgärdstider.",
+          price: () =>
+            `${fmt(basePrices.slaOfficeHoursMonthly)} (8x5) eller ${fmt(
+              basePrices.sla247Monthly
+            )} (24/7) / mån`,
+        },
+        {
+          id: "svc-opt",
+          title: "Systemoptimering",
+          icon: "📈",
+          short: "Kvartalsvisa förbättringar med mätbar effekt.",
+          price: () => `${fmt(basePrices.optimizationQuarter)}/kvartal`,
+        },
+        {
+          id: "svc-onboarding",
+          title: "Onboarding & utbildning",
+          icon: "👥",
+          short: "Strukturerad uppstart och praktisk utbildning per roll.",
+          price: () => `${fmt(basePrices.trainingOnboarding)} engång`,
+        },
+      ];
+
+      // Rendera tjänstekort
+      const cardsRoot = document.getElementById("serviceCards");
+      cardsRoot.innerHTML = services
+        .map(
+          (s) => `
+        <article class="rounded-3xl border bg-white p-6 shadow-sm hover:shadow-md transition">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-xl bg-indigo-100 ring-1 ring-slate-200 flex items-center justify-center text-lg"><span>${
+                s.icon
+              }</span></div>
+              <h3 class="text-lg font-semibold tracking-tight text-indigo-700">${
+                s.title
+              }</h3>
+            </div>
+            <span class="text-sm rounded-xl bg-indigo-50 text-indigo-800 px-3 py-1">${s.price()}</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">${s.short}</p>
+          <a href="services.html#${
+            s.id
+          }" class="mt-4 inline-flex items-center gap-2 text-indigo-700 text-sm hover:underline">Läs mer →</a>
+        </article>
+      `
+        )
+        .join("");
+
+      // Kalkylator (vanilla)
+      const el = (id) => document.getElementById(id);
+      const inputs = [
+        "inpProperties",
+        "inpScadaSites",
+        "inpBankid",
+        "chkPro",
+        "chkEnterprise",
+        "chkQEnergival",
+        "chkAI",
+        "chkSLA247",
+      ].map(el);
+      function recalc() {
+        const p = Math.max(1, Number(el("inpProperties").value || 1));
+        const scadaSites = Math.max(0, Number(el("inpScadaSites").value || 0));
+        const bankidAuths = Math.max(0, Number(el("inpBankid").value || 0));
+        const pro = el("chkPro").checked;
+        const ent = el("chkEnterprise").checked;
+        const addQ = el("chkQEnergival").checked;
+        const addAI = el("chkAI").checked;
+        const sla247 = el("chkSLA247").checked || ent;
+
+        const qcore = p * basePrices.qcorePerPropertyMonthly;
+        const hosting =
+          basePrices.hostingBaseMonthly +
+          p * basePrices.hostingPerPropertyMonthly;
+        const bankid =
+          basePrices.bankidMonthly + bankidAuths * basePrices.bankidPerAuth;
+        const scadaMonthly = scadaSites * basePrices.scadaPerSiteMonthly;
+        const semanticMonthly = p * basePrices.semanticModelPerPropertyMonthly;
+        const api = basePrices.apiMonthly;
+        const sysmgmt = pro || ent ? basePrices.sysmgmtDayPerMonth : 0;
+        const sla = sla247
+          ? basePrices.sla247Monthly
+          : basePrices.slaOfficeHoursMonthly;
+
+        let addons = 0;
+        if (addQ || pro || ent)
+          addons += p * basePrices.qEnergivalPerPropertyMonthly;
+        if (addAI || ent) addons += p * basePrices.aiAnalysisPerPropertyMonthly;
+
+        const monthly =
+          qcore +
+          hosting +
+          bankid +
+          scadaMonthly +
+          semanticMonthly +
+          api +
+          sysmgmt +
+          sla +
+          addons;
+
+        const scadaSetup = scadaSites * basePrices.scadaOnboardingPerSiteSetup;
+        const semanticSetup = p * basePrices.semanticModelPerPropertyOnetime;
+        const training = basePrices.trainingOnboarding;
+        const onetime = scadaSetup + semanticSetup + training;
+
+        el("outMonthly").innerHTML = `${fmt(
+          monthly
+        )}<span class="text-base font-normal text-slate-700">/månad</span>`;
+        el("outOnetime").textContent = fmt(onetime);
+      }
+      inputs.forEach((i) => i.addEventListener("input", recalc));
+      recalc();
+    </script>
+  </body>
 </html>
+
+
