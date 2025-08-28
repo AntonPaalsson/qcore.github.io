@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <title>White paper – Q-Core</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-indigo-50 via-slate-50 to-white text-slate-900">
+
+  <!-- Header (samma stil som övriga) -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-indigo-700/90 border-b border-indigo-600 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white text-indigo-700 font-bold">Q</span>
+        <span class="font-semibold tracking-tight">Q-Core</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html" class="hover:opacity-80">Hem</a>
+        <a href="services.html" class="hover:opacity-80">Tjänster</a>
+        <a href="index.html#priser" class="hover:opacity-80">Priser</a>
+        <a href="index.html#kalkyl" class="hover:opacity-80">Kalkylator</a>
+        <a href="index.html#kontakt" class="hover:opacity-80">Kontakt</a>
+        <a href="whitepaper.html" aria-current="page" class="hover:opacity-80 font-semibold underline">White paper</a>
+      </nav>
+      <a href="index.html#kontakt" class="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2 text-indigo-700 text-sm shadow-sm hover:bg-indigo-100">
+        Boka demo
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-indigo-600 to-violet-500 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h1 class="text-4xl md:text-5xl font-bold">White paper</h1>
+      <p class="mt-4 text-lg text-indigo-100">Läs direkt här eller ladda ner som PDF.</p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <!-- Ladda ner (same-origin → funkar på GitHub Pages) -->
+        <a href="assets/Q-Core-Whitepaper.pdf" download="Q-Core-Whitepaper.pdf"
+           class="inline-flex items-center rounded-2xl bg-white px-5 py-2.5 text-indigo-700 hover:bg-indigo-100">
+          Ladda ner PDF
+        </a>
+        <!-- Öppna i ny flik -->
+        <a href="assets/Q-Core-Whitepaper.pdf" target="_blank" rel="noopener"
+           class="inline-flex items-center rounded-2xl bg-indigo-50/20 px-5 py-2.5 text-white ring-1 ring-white/40 hover:bg-indigo-50/30">
+          Öppna i ny flik
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inbäddad visning -->
+  <section class="py-12 bg-white">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="rounded-2xl border overflow-hidden bg-slate-50">
+        <!-- Enkel, responsiv viewer -->
+        <iframe
+          src="assets/Q-Core-Whitepaper.pdf#view=FitH"
+          class="w-full h-[80vh]"
+          loading="lazy">
+        </iframe>
+      </div>
+      <p class="mt-3 text-sm text-slate-600">
+        Om PDF:en inte visas i din webbläsare, använd knappen “Öppna i ny flik” ovan.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t bg-indigo-700 text-white">
+    <div class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <div>© <span id="year"></span> Q-Core / INIT – Alla rättigheter förbehålls.</div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:underline">Integritet</a>
+        <a href="#" class="hover:underline">Säkerhet</a>
+        <a href="#" class="hover:underline">Status</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
