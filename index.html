@@ -257,41 +257,103 @@
       </div>
     </section>
 
-    <!-- Kontakt -->
-    <section id="kontakt" class="py-12 border-t bg-white">
-      <div class="mx-auto max-w-3xl px-4">
-        <h2 class="text-3xl font-bold tracking-tight text-indigo-700">
-          Boka demo eller begär offert
-        </h2>
-        <form
-          onsubmit="event.preventDefault()"
-          class="mt-6 grid md:grid-cols-2 gap-4"
-        >
-          <input
-            placeholder="Namn"
-            class="rounded-2xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            placeholder="E-post"
-            class="rounded-2xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            placeholder="Företag/Organisation"
-            class="rounded-2xl border px-4 py-3 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <textarea
-            placeholder="Beskriv behov (antal fastigheter, SCADA, SLA, AI, energi m.m.)"
-            rows="5"
-            class="rounded-2xl border px-4 py-3 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          ></textarea>
-          <button
-            class="rounded-2xl bg-indigo-700 px-5 py-3 text-white shadow hover:bg-indigo-800 md:col-span-2"
-          >
-            Skicka
-          </button>
-        </form>
+ <section id="kontakt" class="py-16 bg-white border-t">
+  <div class="mx-auto max-w-3xl px-4">
+    <h2 class="text-3xl font-bold text-indigo-700">Kontakta oss</h2>
+
+    <form id="contactForm"
+          action="https://formspree.io/f/xpwjwnbe"
+          method="POST"
+          class="mt-6 space-y-4">
+
+      <!-- Honeypot mot spam: lämnas tom -->
+      <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Namn</label>
+          <input name="name" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium">E-post</label>
+          <input name="email" type="email" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+        </div>
       </div>
-    </section>
+
+      <div>
+        <label class="block text-sm font-medium">Företag</label>
+        <input name="company" class="mt-1 w-full rounded-xl border px-3 py-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Meddelande</label>
+        <textarea name="message" rows="5" required class="mt-1 w-full rounded-xl border px-3 py-2"></textarea>
+      </div>
+
+      <!-- GDPR samtycke -->
+      <label class="inline-flex items-center gap-2 text-sm">
+        <input name="consent" type="checkbox" required class="rounded" />
+        Jag samtycker till att mina uppgifter behandlas för att besvara min förfrågan.
+      </label>
+
+      <!-- Formspree inställningar -->
+      <input type="hidden" name="_subject" value="[Q-Core] Ny kontaktförfrågan" />
+      <input type="hidden" name="_template" value="table" />
+
+      <button id="sendBtn"
+              class="inline-flex items-center rounded-2xl bg-indigo-600 px-5 py-2.5 text-white hover:bg-indigo-700">
+        Skicka
+      </button>
+
+      <p id="formMsg" class="text-sm mt-2"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const btn  = document.getElementById('sendBtn');
+  const msg  = document.getElementById('formMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = '';
+    btn.disabled = true; btn.textContent = 'Skickar...';
+
+    const data = new FormData(form);
+
+    // enkel validering (extra, utöver HTML5)
+    const email = data.get('email')?.toString().trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.className = 'text-sm mt-2 text-red-700';
+      msg.textContent = 'Ogiltig e-postadress.'; 
+      btn.disabled = false; btn.textContent = 'Skicka';
+      return;
+    }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        msg.className = 'text-sm mt-2 text-green-700';
+        msg.textContent = 'Tack! Vi återkommer så snart vi kan.';
+      } else {
+        msg.className = 'text-sm mt-2 text-red-700';
+        msg.textContent = 'Kunde inte skicka just nu. Mejla oss gärna direkt.';
+      }
+    } catch {
+      msg.className = 'text-sm mt-2 text-red-700';
+      msg.textContent = 'Nätverksfel. Försök igen.';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Skicka';
+    }
+  });
+</script>
 
     <!-- Footer -->
     <footer class="py-10 border-t bg-indigo-700 text-white">
