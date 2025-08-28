@@ -40,60 +40,82 @@
   <!-- Lista med tjänster -->
   <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
     <section id="svc-qcore">
-      <h2 class="text-2xl font-bold text-indigo-700">🗄️ Q-Core plattform</h2>
-      <p class="mt-4 text-slate-700">
-        Q-Core fungerar som den centrala plattformen i hela lösningen. Den består av tre huvuddelar: ett datalager, ett asset-register och ett API-lager. Datalagret är byggt för att kunna ta emot, lagra och strukturera stora mängder drift- och mätdata från olika källor. Asset-registret fungerar som en strukturerad katalog över fastighetens tekniska komponenter – från styrsystem, sensorer och mätare till byggnader och utrymmen. API-lagret möjliggör att denna data kan exponeras och nyttjas av andra system, både interna och externa.
-      </p>
-      <p class="mt-2 text-slate-700">
-        Plattformen är byggd för att vara oberoende av underliggande SCADA- eller IoT-lösningar. Det innebär att den kan ta emot data via BACnet, MQTT, OPC UA eller andra standardiserade gränssnitt. På så sätt kan både gamla och nya system samexistera och bidra till en gemensam databas. Det centrala syftet är att undvika inlåsning till en enskild leverantör och istället skapa en neutral bas för förvaltning och analys.
-      </p>
-      <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
-        <strong>Exempel:</strong> En kommun med 500 fastigheter har idag flera olika SCADA-system från olika epoker och leverantörer. Med Q-Core kan alla datapunkter samlas i ett gemensamt lager och kopplas till fastighetens asset-struktur.
-      </div>
-    </section>
+  <h2 class="text-2xl font-bold text-indigo-700">🗄️ Q-Core plattform</h2>
+  <p class="mt-4 text-slate-700">
+    Q-Core fungerar som den centrala plattformen i hela lösningen. Den består av tre huvuddelar: ett datalager, ett asset-register och ett API-lager. Datalagret är byggt för att kunna ta emot, lagra och strukturera stora mängder drift- och mätdata från olika källor. Asset-registret fungerar som en strukturerad katalog över fastighetens tekniska komponenter – från styrsystem, sensorer och mätare till byggnader och utrymmen. API-lagret möjliggör att denna data kan exponeras och nyttjas av andra system, både interna och externa.
+  </p>
+  <p class="mt-2 text-slate-700">
+    Plattformen är byggd för att vara oberoende av underliggande SCADA- eller IoT-lösningar. Det innebär att den kan ta emot data via BACnet, MQTT, OPC UA eller andra standardiserade gränssnitt. På så sätt kan både gamla och nya system samexistera och bidra till en gemensam databas. Det centrala syftet är att undvika inlåsning till en enskild leverantör och istället skapa en neutral bas för förvaltning och analys.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> En kommun med 500 fastigheter har idag flera olika SCADA-system från olika epoker och leverantörer. Med Q-Core kan alla datapunkter samlas i ett gemensamt lager och kopplas till fastighetens asset-struktur. Detta gör det möjligt att skapa standardiserade rapporter för energianvändning, oavsett vilket underliggande system informationen ursprungligen kommer ifrån.
+  </div>
+</section>
 
-    <section id="svc-hosting">
-      <h2 class="text-2xl font-bold text-indigo-700">🛡️ Hosting & drift (SE)</h2>
-      <p class="mt-4 text-slate-700">
-        För att avlasta driftorganisationen kan Q-Core driftas i en svensk serverhall med redundanta system för ström, kyla och nätverk. Hostingtjänsten inkluderar övervakning av tillgänglighet, säkerhetskopiering av data samt hantering av uppgraderingar.
-      </p>
-      <p class="mt-2 text-slate-700">
-        Backuprutinerna är uppsatta med daglig kopiering och regelbunden verifiering. Vid en incident kan data återställas till en viss tidpunkt. Uppgraderingar av plattformen sker planerat och testas i en stagingmiljö innan de läggs in i produktionsmiljön. På så sätt kan nya funktioner införas utan att driften riskeras.
-      </p>
-      <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
-        <strong>Exempel:</strong> Ett fastighetsbolag med begränsad intern IT-avdelning väljer hosting för att slippa bygga egen servermiljö. När nya versioner av Q-Core släpps sker uppgraderingen centralt, vilket innebär att driftorganisationen alltid arbetar i den senaste och mest säkra miljön utan eget ansvar för patchning.
-      </div>
-    </section>
+<section id="svc-hosting">
+  <h2 class="text-2xl font-bold text-indigo-700">🛡️ Hosting & drift (SE)</h2>
+  <p class="mt-4 text-slate-700">
+    För att avlasta driftorganisationen kan Q-Core driftas i en svensk serverhall med redundanta system för ström, kyla och nätverk. Hostingtjänsten inkluderar övervakning av tillgänglighet, säkerhetskopiering av data samt hantering av uppgraderingar. Övervakningen sker på flera nivåer – från hårdvarans status till applikationens funktionalitet – för att säkerställa att hela kedjan fungerar.
+  </p>
+  <p class="mt-2 text-slate-700">
+    Backuprutinerna är uppsatta med daglig kopiering och regelbunden verifiering. Vid en incident kan data återställas till en viss tidpunkt. Uppgraderingar av plattformen sker planerat och testas i en stagingmiljö innan de läggs in i produktionsmiljön. På så sätt kan nya funktioner införas utan att driften riskeras.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> Ett fastighetsbolag med begränsad intern IT-avdelning väljer hosting för att slippa bygga egen servermiljö. När nya versioner av Q-Core släpps sker uppgraderingen centralt, vilket innebär att driftorganisationen alltid arbetar i den senaste och mest säkra miljön utan eget ansvar för patchning.
+  </div>
+</section>
 
-    <section id="svc-bankid">
-      <h2 class="text-2xl font-bold text-indigo-700">✅ BankID-inloggning</h2>
-      <p class="mt-4 text-slate-700">
-        BankID-inloggningen är byggd som en integrationslösning via Zignsec och ger en säker autentisering för både interna användare och externa parter. Lösningen kan utökas med AD-koppling för central rättighetshantering.
-      </p>
-      <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
-        <strong>Exempel:</strong> I en större kommun behöver olika entreprenörer logga in för att felsöka SCADA eller följa energistatistik. BankID gör det möjligt att ge dem tillfälliga rättigheter utan lokal användarhantering.
-      </div>
-    </section>
+<section id="svc-bankid">
+  <h2 class="text-2xl font-bold text-indigo-700">✅ BankID-inloggning</h2>
+  <p class="mt-4 text-slate-700">
+    BankID-inloggningen är byggd som en integrationslösning via Zignsec och ger en säker autentisering för både interna användare och externa parter. Lösningen kan utökas med AD-koppling, vilket innebär att autentiseringen via BankID mappas mot en organisations interna användarkatalog. På så sätt kan rättigheter och behörigheter hanteras i en central struktur.
+  </p>
+  <p class="mt-2 text-slate-700">
+    Inloggningslösningen är särskilt användbar i organisationer där flera externa entreprenörer behöver åtkomst till samma system. Genom BankID-lösningen kan entreprenörer ges tillfälliga eller begränsade behörigheter utan att det kräver lokal användarhantering. Detta minskar både administration och risk för obehörig åtkomst.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> I en större kommun behöver olika entreprenörer logga in för att felsöka SCADA eller följa energistatistik. Genom BankID-inloggningen kan de ges tillgång enbart till de byggnader de ansvarar för, medan kommunens egna drifttekniker har bredare behörigheter.
+  </div>
+</section>
 
-    <section id="svc-scada">
-      <h2 class="text-2xl font-bold text-indigo-700">🕸️ SCADA-integration</h2>
-      <p class="mt-4 text-slate-700">
-        Integration mot SCADA sker genom en standardiserad nodlösning där datapunkter publiceras via TLS/IP. Detta innebär att säker krypterad kommunikation upprättas mellan SCADA-systemet och Q-Core.
-      </p>
-      <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
-        <strong>Exempel:</strong> Ett sjukhus med tre parallella SCADA-installationer kan via Q-Core följa alla nyckelvärden i en gemensam vy.
-      </div>
-    </section>
+<section id="svc-scada">
+  <h2 class="text-2xl font-bold text-indigo-700">🕸️ SCADA-integration</h2>
+  <p class="mt-4 text-slate-700">
+    Integration mot SCADA sker genom en standardiserad nodlösning där datapunkter publiceras via TLS/IP. Detta innebär att säker krypterad kommunikation upprättas mellan SCADA-systemet och Q-Core. Oavsett om det är Schneider EBO eller ett annat SCADA-system kan datapunkterna exponeras och struktureras in i plattformen.
+  </p>
+  <p class="mt-2 text-slate-700">
+    Processen inkluderar identifiering av relevanta datapunkter, uppsättning av noder för publicering och validering av att datan överförs korrekt. När integrationen är på plats blir alla SCADA-data tillgängliga i Q-Core och kan användas både för drift, analys och rapportering.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> Ett sjukhus med kritiska system för kyla, ventilation och eldistribution har tre parallella SCADA-installationer från olika leverantörer. Med integration till Q-Core kan tekniska chefer följa alla nyckelvärden i en gemensam vy, utan att behöva logga in i tre olika gränssnitt.
+  </div>
+</section>
 
-    <section id="svc-semantik">
-      <h2 class="text-2xl font-bold text-indigo-700">🧩 Semantisk modell</h2>
-      <p class="mt-4 text-slate-700">
-        Q-Core erbjuder mappning av datapunkter och objekt enligt semantiska standarder som Brick, RealEstateCore (REC) och Project Haystack. Detta gör data portabel, sökbar och analysvänlig.
-      </p>
-      <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
-        <strong>Exempel:</strong> I en skolförvaltning kan alla datapunkter för klassrum filtreras fram på sekunder, även om de kommer från olika system.
-      </div>
-    </section>
+<section id="svc-semantik">
+  <h2 class="text-2xl font-bold text-indigo-700">🧩 Semantisk modell</h2>
+  <p class="mt-4 text-slate-700">
+    Q-Core erbjuder mappning av datapunkter och objekt enligt semantiska standarder som Brick, RealEstateCore (REC) och Project Haystack. Detta innebär att data inte enbart lagras som numeriska värden, utan även beskrivs med metadata som anger vad datapunkten representerar, var den är placerad och i vilket sammanhang den används.
+  </p>
+  <p class="mt-2 text-slate-700">
+    Syftet med semantisk modellering är att göra data portabel och sökbar. När all data är taggad och strukturerad går det att ställa frågor som "vilka byggnader har temperaturgivare i klassrum?" eller "vilka ventilationsaggregat saknar tryckgivare?". Detta skapar helt nya möjligheter för analys och systemutveckling.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> I en skolförvaltning vill man analysera inomhusklimatet i klassrum. Med hjälp av semantisk modellering kan alla relevanta datapunkter filtreras fram på några sekunder, även om de från början kommer från olika system och heter olika i respektive källa.
+  </div>
+</section>
+
+<section id="svc-qenergival">
+  <h2 class="text-2xl font-bold text-indigo-700">⚡ Q-Energival</h2>
+  <p class="mt-4 text-slate-700">
+    Q-Energival är en funktion i Q-Core som validerar och följer upp energidata. Den säkerställer att mätvärden är rimliga, att inga datapunkter saknas och att avvikelser flaggas. Utöver validering finns funktioner för energiuppföljning där data kan visualiseras i överskådliga vyer.
+  </p>
+  <p class="mt-2 text-slate-700">
+    SPoG-vyer (Single Pane of Glass) används för att samla energiinformation från flera fastigheter i en och samma panel. Här kan förvaltaren se både total energianvändning, fördelning per byggnad och utveckling över tid. Detta underlättar både driftoptimering och rapportering mot exempelvis miljömål.
+  </p>
+  <div class="mt-4 p-4 bg-indigo-50 rounded-2xl text-slate-700 text-sm">
+    <strong>Exempel:</strong> Efter att ha bytt ventilationssystem i ett antal skolor vill kommunen säkerställa att energianvändningen verkligen minskar. Genom Q-Energival kan de följa upp förbrukningen månad för månad och jämföra med tidigare år för att verifiera effekten av investeringen.
+  </div>
+</section>
 
     <section id="svc-qenergival">
       <h2 class="text-2xl font-bold text-indigo-700">⚡ Q-Energival</h2>
